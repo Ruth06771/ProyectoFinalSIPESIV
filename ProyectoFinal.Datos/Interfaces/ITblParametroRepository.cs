@@ -5,7 +5,7 @@ using System.Text;
 
 namespace ProyectoFinal.Datos.Interfaces
 {
-    public class ITblParametroRepository
+    public interface ITblParametroRepository
     {
         public Task<int> Crear(TblParametro parametro);
         public Task<int> Actualizar(TblParametro parametro);
