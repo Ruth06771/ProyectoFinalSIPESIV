@@ -1,0 +1,75 @@
+﻿using ProyectoFinal.Datos.Entities;
+using ProyectoFinal.Datos.Interfaces;
+using ProyectoFinal.Datos.Repository;
+using ProyectoFinal.Negocio.DTOs.TblAsignatura;
+using ProyectoFinal.Negocio.DTOs.TblArea;
+using ProyectoFinal.Negocio.Interfaces;
+using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace ProyectoFinal.Negocio.Services
+{
+    public class TblAsignaturaService : ITblAsignaturaService
+    {
+        private readonly ITblAsignaturaRepository _tblAsignaturaRepository;
+        public TblAsignaturaService(ITblAsignaturaRepository tblAsignaturaRepository)
+        {
+            _tblAsignaturaRepository = tblAsignaturaRepository;
+        }
+        public async Task Actualizar(UpdateTblAsignaturaDTO asignatura)
+        {
+            TblAsignatura asignaturaActualizada = new TblAsignatura
+            {
+                lAsignatura_id = asignatura.lAsignatura_id,
+                lArea_id = asignatura.lArea_id,
+                lAsignatura_slog = asignatura.lAsignatura_slog,
+                lAsignatura_nm = asignatura.lAsignatura_nm
+            };
+            int resultado = await _tblAsignaturaRepository.Actualizar(asignaturaActualizada);
+            if (resultado == 0)
+            {
+                throw new Exception("Ocurrió un error al actualizar la asignatura");
+            }
+        }
+        public async Task Crear(CreateTblAsignaturaDTO asignatura)
+        {
+            TblAsignatura asignaturaCreada = new TblAsignatura
+            {
+                lArea_id = asignatura.lArea_id,
+                lAsignatura_slog = asignatura.lAsignatura_slog,
+                lAsignatura_nm = asignatura.lAsignatura_nm
+            };
+            int resultado = await _tblAsignaturaRepository.Crear(asignaturaCreada);
+            if (resultado == 0)
+            {
+                throw new Exception("Ocurrió un error al crear la asignatura");
+            }
+        }
+        public async Task Eliminar(int idAsignatura)
+        {
+            int resultado = await _tblAsignaturaRepository.Eliminar(idAsignatura);
+            if (resultado == 0)
+            {
+                throw new Exception("Ocurrió un error al eliminar la asignatura");
+            }
+        }
+        public async Task<List<ReadTblAsignaturaDTO>> ObtenerAsignaturas()
+        {
+            var asignaturas = await _tblAsignaturaRepository.ObtenerAsignaturas();
+            List<ReadTblAsignaturaDTO> listaDTOs = new List<ReadTblAsignaturaDTO>();
+            foreach (var item in asignaturas)
+            {
+                listaDTOs.Add(new ReadTblAsignaturaDTO
+                {
+                    lAsignatura_id = item.lAsignatura_id,
+                    lArea_id = item.lArea_id,
+                    lAsignatura_slog = item.lAsignatura_slog,
+                    lAsignatura_nm = item.lAsignatura_nm
+                });
+            }
+
+        }
+
+    }
+}
