@@ -11,10 +11,10 @@ using System.Text;
 
 namespace ProyectoFinal.Negocio.Services
 {
-    public class TblUnidadOrganizativa : ITblUnidadOrganizativaService
+    public class TblUnidadOrganizativaService : ITblUnidadOrganizativaService
     {
         private readonly ITblUnidadOrganizativaRepository _tblUnidadOrganizativaRepository;
-        public TblUnidadOrganizativa(ITblUnidadOrganizativaRepository tblUnidadOrganizativaRepository)
+        public TblUnidadOrganizativaService(ITblUnidadOrganizativaRepository tblUnidadOrganizativaRepository)
         {
             _tblUnidadOrganizativaRepository = tblUnidadOrganizativaRepository;
         }
@@ -75,9 +75,9 @@ namespace ProyectoFinal.Negocio.Services
             };
         }
 
-        public async Task<List<ReadTblUnidadOrganizativaDTO>> ObtenerSubParametros()
+        public async Task<List<ReadTblUnidadOrganizativaDTO>> ObtenerUnidadesOrganizativas()
         {
-            var subParametros = await _tblUnidadOrganizativaRepository.ObtenerSubParametros();
+            var subParametros = await _tblUnidadOrganizativaRepository.ObtenerUnidadesOrganizativas();
             return subParametros.Select(subparam => new ReadTblUnidadOrganizativaDTO
             {
                 lUnidadOrganizativa_id = subparam.lUnidadOrganizativa_id,
