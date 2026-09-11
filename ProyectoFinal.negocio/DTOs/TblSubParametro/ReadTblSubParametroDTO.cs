@@ -10,6 +10,5 @@ namespace ProyectoFinal.Negocio.DTOs.TblSubParametro
         public int lParametro_id { get; set; }
         public string sSubParametro_nm { get; set; }
         public string sSubParametro_desc { get; set; }
-    }x
-}
+    }
 }
