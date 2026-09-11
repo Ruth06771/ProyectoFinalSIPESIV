@@ -7,19 +7,32 @@ using Scalar.AspNetCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-
 builder.Services.AddControllers();
+
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
-
 builder.Services.AddSwaggerGen();
+
 //Base de datos
 builder.Services.AddScoped<ProyectoFinalDatabase>();
 // Repositorios
 builder.Services.AddScoped<ITblPersonaRepository, TblPersonaRepository>();
+builder.Services.AddScoped<ItblInstitucionRepository, TblInstitucionRepository>();
+builder.Services.AddScoped<ITblUnidadOrganizativaRepository, TblUnidadOrganizativaRepository>();
+builder.Services.AddScoped<ITblAsignaturaRepository, TblAsignaturaRepository>();
+builder.Services.AddScoped<ITblAreaRepository, TblAreaRepository>();
+builder.Services.AddScoped<ITblParametroRepository, TblParametroRepository>();
+builder.Services.AddScoped<ITblSubParametroRepository, TblSubParametroRepository>();
 // Servicios
 builder.Services.AddScoped<ITblPersonaService, TblPersonaService>();
+builder.Services.AddScoped<ITblAsignaturaService, TblAsignaturaService>();
+builder.Services.AddScoped<ITblAreaService, TblaAreaService>();
+builder.Services.AddScoped<ITblInstitucionService, TblInstitucionService>();
+builder.Services.AddScoped<ITblParametroService, TblParametroService>();
+builder.Services.AddScoped<ITblSubParametroService, TblSubParametroService>();
+builder.Services.AddScoped<ITblUnidadOrganizativaService, TblUnidadOrganizativaService>();
+
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
