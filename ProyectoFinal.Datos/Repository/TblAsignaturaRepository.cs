@@ -46,7 +46,7 @@ namespace ProyectoFinal.Datos.Repository
             });
             return resultado.FirstOrDefault();
         }
-        public async Task<List<TblAsignatura>> ObtenerAreas()
+        public async Task<List<TblAsignatura>> ObtenerAsignaturas()
         {
             IEnumerable<TblAsignatura> resultado = await _database.GetData<TblAsignatura>("fn_tblasignatura_obtener_asignaturas");
             return resultado.ToList();

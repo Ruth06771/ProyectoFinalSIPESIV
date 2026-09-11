@@ -7,10 +7,10 @@ namespace ProyectoFinal.Datos.Interfaces
 {
     public interface ITblAreaRepository
     {
-        public Task<int> Crear(TblArea);
-        public Task<int> Actualizar(TblArea);
+        public Task<int> Crear(TblArea area);
+        public Task<int> Actualizar(TblArea area);
         public Task<int> Eliminar(int area); 
-        public Task<int> ObtenerPorId(int area);
+        public Task<TblArea> ObtenerPorId(int area);
         public Task<List<TblArea>> ObtenerAreas();
     }
 }

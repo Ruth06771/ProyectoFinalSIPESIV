@@ -5,7 +5,7 @@ using System.Text;
 
 namespace ProyectoFinal.Negocio.Interfaces
 {
-    public interface ITblUnidadOrganizativa
+    public interface ITblUnidadOrganizativaService
     {
         public Task Crear(CreateTblUnidadOrganizativaDTO unidadOrganizativa);
         public Task Actualizar(UpdateTblUnidadOrganizativaDTO unidadOrganizativa);

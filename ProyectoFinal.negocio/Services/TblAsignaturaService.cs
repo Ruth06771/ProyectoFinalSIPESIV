@@ -68,8 +68,12 @@ namespace ProyectoFinal.Negocio.Services
                     lAsignatura_nm = item.lAsignatura_nm
                 });
             }
-
+            return listaDTOs;
         }
 
+        public Task<ReadTblAsignaturaDTO> ObtenerPorId(int idAsignatura)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
