@@ -8,9 +8,9 @@ namespace ProyectoFinal.Datos.Interfaces
     public interface ITblPersonaRepository
     {
         // CRUD
-        public Task Crear(TblPersona persona);
-        public Task Actualizar(TblPersona persona);
-        public Task Eliminar(int idPersona);
+        public Task<int> Crear(TblPersona persona);
+        public Task<int> Actualizar(TblPersona persona);
+        public Task<int> Eliminar(int idPersona);
         public Task<TblPersona> ObtenerPorId(int idPersona);
         public Task<List<TblPersona>> ObtenerTodos();
     }
