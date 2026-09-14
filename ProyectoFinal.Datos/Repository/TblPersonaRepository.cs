@@ -14,7 +14,7 @@ namespace ProyectoFinal.Datos.Repository
         {
             _database = database;
         }
-        public async Task Actualizar(TblPersona persona)
+        public async Task<int> Actualizar(TblPersona persona)
         {
             IEnumerable<int> personaResult = await _database.GetData<int>("fn_tblpersona_actualizar", new TblPersona
             {
@@ -25,9 +25,11 @@ namespace ProyectoFinal.Datos.Repository
                 sPersona_telf = persona.sPersona_telf,
                 sPersona_tipo_persona = persona.sPersona_tipo_persona
             });
+            return personaResult.FirstOrDefault();
         }
 
-        public async Task Crear(TblPersona persona)
+
+        public async Task<int> Crear(TblPersona persona)
         {
             IEnumerable<int> personaResult = await _database.GetData<int>("fn_tblpersona_crear", new
             {
@@ -37,14 +39,16 @@ namespace ProyectoFinal.Datos.Repository
                 sPersona_telf = persona.sPersona_telf,
                 sPersona_tipo_persona = persona.sPersona_tipo_persona
             });
+            return personaResult.FirstOrDefault();
         }
 
-        public async Task Eliminar(int idPersona)
+        public async Task<int> Eliminar(int idPersona)
         {
             IEnumerable<int> personaResult = await _database.GetData<int>("fn_tblpersona_eliminar", new
             {
                lPersona_id = idPersona
             });
+            return personaResult.FirstOrDefault();
         }
 
         public async Task<TblPersona> ObtenerPorId(int idPersona)

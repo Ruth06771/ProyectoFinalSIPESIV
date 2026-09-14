@@ -17,7 +17,7 @@ namespace ProyectoFinal.Datos.Repository
 
         public async Task<int> Crear(TblUnidadOrganizativa unidad)
         {
-            IEnumerable<int> resultado = await _database.GetData<int>(" fn_tblunidad_organizativa_crear", new
+            IEnumerable<int> resultado = await _database.GetData<int>("fn_tblunidad_organizativa_crear", new
             {
                 lInstitucion_id = unidad.lInstitucion_id,
                 sUnidadOrganizativa_nm = unidad.sUnidadOrganizativa_nm,

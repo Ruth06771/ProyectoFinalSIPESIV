@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using ProyectoFinal.Negocio.DTOs.TblArea;
-using ProyectoFinal.Negocio.DTOs.TblSubParametro;
 using ProyectoFinal.Negocio.Interfaces;
 using ProyectoFinal.Negocio.Services;
 

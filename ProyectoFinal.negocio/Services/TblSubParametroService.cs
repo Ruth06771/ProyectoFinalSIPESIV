@@ -1,7 +1,6 @@
 ﻿using ProyectoFinal.Datos.Entities;
 using ProyectoFinal.Datos.Interfaces;
 using ProyectoFinal.Datos.Repository;
-using ProyectoFinal.Negocio.DTOs.TblParametro;
 using ProyectoFinal.Negocio.DTOs.TblSubParametro;
 using ProyectoFinal.Negocio.Interfaces;
 using System;
