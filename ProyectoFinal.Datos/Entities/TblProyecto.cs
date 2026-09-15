@@ -1,0 +1,17 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace ProyectoFinal.Datos.Entities
+{
+    public class TblProyecto
+    {
+        public int lProyecto_id {  get; set; }
+        public int lAsignatura_id  { get; set; }
+        public string sProyecto_nm { get; set; }
+        public string sProyecto_desc { get; set; }
+        public string sProyecto_tipo { get; set; }
+        public bool sProyecto_estado { get; set; }
+        public string sProyecto_video { get; set; }
+    }
+}
