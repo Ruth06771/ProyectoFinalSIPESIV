@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using ProyectoFinal.Negocio.DTOs.TblPermiso;
 using ProyectoFinal.Negocio.Interfaces;
+using ProyectoFinal.Negocio.DTOs;
 
 namespace ProyectoFinal.Controllers
 {

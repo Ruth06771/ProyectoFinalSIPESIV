@@ -23,10 +23,10 @@ namespace ProyectoFinal.Negocio.Services
                 lPermisos_id = permisos.lPermisos_id,
                 lRol_id = permisos.lRol_id,
                 lProgram_id = permisos.lProgram_id,
-                Insertar = permisos.Insertar,
-                Actualizar = permisos.Actualizar,
-                Consultar = permisos.Consultar,
-                Eliminar = permisos.Eliminar
+                insertar = permisos.insertar,
+                actualizar = permisos.actualizar,
+                consultar = permisos.consultar,
+                eliminar = permisos.eliminar
             };
             await _tblPermisosRepository.Actualizar(objPermisos);
         }
@@ -35,12 +35,13 @@ namespace ProyectoFinal.Negocio.Services
         {
             TblPermisos objPermisos = new TblPermisos
             {
+             
                 lRol_id = permisos.lRol_id,
                 lProgram_id = permisos.lProgram_id,
-                Insertar = permisos.Insertar,
-                Actualizar = permisos.Actualizar,
-                Consultar = permisos.Consultar,
-                Eliminar = permisos.Eliminar
+                insertar = permisos.insertar,
+                actualizar = permisos.actualizar,
+                consultar = permisos.consultar,
+                eliminar = permisos.eliminar
             };
             await _tblPermisosRepository.Crear(objPermisos);
         }
@@ -50,19 +51,20 @@ namespace ProyectoFinal.Negocio.Services
             await _tblPermisosRepository.Eliminar(idPermisos);
         }
 
-        public async Task<TblPermisosReadDto> ObtenerPorId(int idPermisos)
+        public async Task<TblPermisosReadDto?> ObtenerPorId(int idPermisos)
         {
             var result = await _tblPermisosRepository.ObtenerPorId(idPermisos);
             if (result is null) return null;
+
             return new TblPermisosReadDto
             {
                 lPermisos_id = result.lPermisos_id,
                 lRol_id = result.lRol_id,
                 lProgram_id = result.lProgram_id,
-                Insertar = result.Insertar,
-                Actualizar = result.Actualizar,
-                Consultar = result.Consultar,
-                Eliminar = result.Eliminar
+                insertar = result.insertar,
+                actualizar = result.actualizar,
+                consultar = result.consultar,
+                eliminar = result.eliminar
             };
         }
 
@@ -78,15 +80,17 @@ namespace ProyectoFinal.Negocio.Services
                     lPermisos_id = permiso.lPermisos_id,
                     lRol_id = permiso.lRol_id,
                     lProgram_id = permiso.lProgram_id,
-                    Insertar = permiso.Insertar,
-                    Actualizar = permiso.Actualizar,
-                    Consultar = permiso.Consultar,
-                    Eliminar = permiso.Eliminar
+                    insertar = permiso.insertar,
+                    actualizar = permiso.actualizar,
+                    consultar = permiso.consultar,
+                    eliminar = permiso.eliminar
                 };
                 permisosDTO.Add(permisoDTO);
             }
 
             return permisosDTO;
         }
+
+     
     }
 }

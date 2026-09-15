@@ -19,13 +19,11 @@ namespace ProyectoFinal.Datos.Repository
         {
             IEnumerable<int> permisosResult = await _database.GetData<int>("fn_tblpermisos_actualizar", new
             {
-                p_lPermisos_id = permisos.lPermisos_id,
-                p_lRol_id = permisos.lRol_id,
-                p_lProgram_id = permisos.lProgram_id,
-                p_Insertar = permisos.Insertar,
-                p_Actualizar = permisos.Actualizar,
-                p_Consultar = permisos.Consultar,
-                p_Eliminar = permisos.Eliminar
+               
+                p_Insertar = permisos.insertar,
+                p_Actualizar = permisos.actualizar,
+                p_Consultar = permisos.consultar,
+                p_Eliminar = permisos.eliminar
             });
         }
 
@@ -35,10 +33,10 @@ namespace ProyectoFinal.Datos.Repository
             {
                 p_lRol_id = permisos.lRol_id,
                 p_lProgram_id = permisos.lProgram_id,
-                p_Insertar = permisos.Insertar,
-                p_Actualizar = permisos.Actualizar,
-                p_Consultar = permisos.Consultar,
-                p_Eliminar = permisos.Eliminar
+                p_Insertar = permisos.insertar,
+                p_Actualizar = permisos.actualizar,
+                p_Consultar = permisos.consultar,
+                p_Eliminar = permisos.eliminar
             });
         }
 
