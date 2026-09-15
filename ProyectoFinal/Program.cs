@@ -23,6 +23,10 @@ builder.Services.AddScoped<ITblAsignaturaRepository, TblAsignaturaRepository>();
 builder.Services.AddScoped<ITblAreaRepository, TblAreaRepository>();
 builder.Services.AddScoped<ITblParametroRepository, TblParametroRepository>();
 builder.Services.AddScoped<ITblSubParametroRepository, TblSubParametroRepository>();
+builder.Services.AddScoped<ITblRolRepository, TblRolRepository>();
+builder.Services.AddScoped<ITblProgramRepository, TblProgramRepository>();
+builder.Services.AddScoped<ITblPermisosRepository, TblPermisosRepository>();
+builder.Services.AddScoped<ITblUsuarioRepository, TblUsuarioRepository>();
 // Servicios
 builder.Services.AddScoped<ITblPersonaService, TblPersonaService>();
 builder.Services.AddScoped<ITblAsignaturaService, TblAsignaturaService>();
@@ -31,6 +35,10 @@ builder.Services.AddScoped<ITblInstitucionService, TblInstitucionService>();
 builder.Services.AddScoped<ITblParametroService, TblParametroService>();
 builder.Services.AddScoped<ITblSubParametroService, TblSubParametroService>();
 builder.Services.AddScoped<ITblUnidadOrganizativaService, TblUnidadOrganizativaService>();
+builder.Services.AddScoped<ITblRolService, TblRolService>();
+builder.Services.AddScoped<ITblProgramService, TblProgramService>();
+builder.Services.AddScoped<ITblPermisosService, TblPermisosService>();
+builder.Services.AddScoped<ITblUsuarioService, TblUsuarioService>();
 
 
 var app = builder.Build();
