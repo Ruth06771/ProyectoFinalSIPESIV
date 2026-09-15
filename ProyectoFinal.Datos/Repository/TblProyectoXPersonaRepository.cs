@@ -3,61 +3,78 @@ using ProyectoFinal.Datos.Entities;
 using ProyectoFinal.Datos.Interfaces;
 using System;
 using System.Collections.Generic;
-using System.Text;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace ProyectoFinal.Datos.Repository
 {
-    public class TblProyectoXPersonaRepository : ITblProyectoXPersona
+    public class TblProyectoXPersonaRepository : ITblProyectoXPersonaRepository
     {
-        public readonly ProyectoFinalDatabase _database;
+        private readonly ProyectoFinalDatabase _database;
+
         public TblProyectoXPersonaRepository(ProyectoFinalDatabase database)
         {
             _database = database;
         }
 
-        public async Task Actualizar(TblProyectoXPersona proyectoXPersona)
+        public async Task<int> Actualizar(TblProyectoXPersona proyectoxpersona)
         {
-            IEnumerable<int> personaResult = await _database.GetData<int>("", new TblProyectoXPersona
+            IEnumerable<int> result = await _database.GetData<int>("fn_tblproyectoxpersona_actualizar", new
             {
-                lProyectoXPersona_id = proyectoXPersona.lProyectoXPersona_id,
-                lProyecto_id = proyectoXPersona.lProyecto_id,
-                lPersona_id = proyectoXPersona.lPersona_id
+                lProyectoXPersona_id = proyectoxpersona.lProyectoXPersona_id,
+                lProyecto_id = proyectoxpersona.lProyecto_id,
+                lPersona_id = proyectoxpersona.lPersona_id
             });
+            return result.FirstOrDefault();
         }
 
-        public Task Crear(TblEvaluacionVisitante evaluacionVisitante)
+        public async Task<int> Crear(TblProyectoXPersona proyectoxpersona)
         {
-            throw new NotImplementedException();
+            IEnumerable<int> result = await _database.GetData<int>("fn_tblproyectoxpersona_crear", new
+            {
+                lProyecto_id = proyectoxpersona.lProyecto_id,
+                lPersona_id = proyectoxpersona.lPersona_id
+            });
+            return result.FirstOrDefault();
         }
 
-        public Task Crear(TblProyectoXPersona proyectoXPersona)
+        public async Task<int> Eliminar(int idProyectoxPersona)
         {
-            throw new NotImplementedException();
+            IEnumerable<int> result = await _database.GetData<int>("fn_tblproyectoxpersona_eliminar", new
+            {
+                lProyectoxPersona_id = idProyectoxPersona
+            });
+            return result.FirstOrDefault();
         }
 
-        public Task Eliminar(int idEvaluacionVisitante)
+        public async Task<TblProyectoXPersona> ObtenerPorId(int idProyectoxPersona)
         {
-            throw new NotImplementedException();
+            IEnumerable<TblProyectoXPersona> result = await _database.GetData<TblProyectoXPersona>("fn_tblproyectoxpersona_obtenerporid", new
+            {
+                p_lProyectoxPersona_id = idProyectoxPersona
+            });
+            return result.FirstOrDefault();
         }
 
-        public Task<TblEvaluacionVisitante> ObtenerPorId(int idEvaluacionVisitante)
+        public async Task<List<TblProyectoXPersona>> ObtenerTodos()
         {
-            throw new NotImplementedException();
+            IEnumerable<TblProyectoXPersona> result = await _database.GetData<TblProyectoXPersona>("fn_tblproyectoxpersona_obtenertodos");
+            return result.ToList();
         }
 
-        public Task<List<TblEvaluacionVisitante>> ObtenerTodos()
+        Task ITblProyectoXPersonaRepository.Actualizar(TblProyectoXPersona proyectoXPersona)
         {
-            throw new NotImplementedException();
+            return Actualizar(proyectoXPersona);
         }
 
-        Task<TblProyectoXPersona> ITblProyectoXPersona.ObtenerPorId(int idProyectoXPersona)
+        Task ITblProyectoXPersonaRepository.Crear(TblProyectoXPersona proyectoXPersona)
         {
-            throw new NotImplementedException();
+            return Crear(proyectoXPersona);
         }
 
-        Task<List<TblProyectoXPersona>> ITblProyectoXPersona.ObtenerTodos()
+        Task ITblProyectoXPersonaRepository.Eliminar(int idProyectoXPersona)
         {
-            throw new NotImplementedException();
+            return Eliminar(idProyectoXPersona);
         }
     }
 }

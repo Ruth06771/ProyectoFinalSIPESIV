@@ -25,14 +25,14 @@ namespace ProyectoFinal.Datos.DataAccess
 
                 if (parameters == null)
                 {
-                    sql = $"SELECT * FROM {functionName}()";
+                    sql = $"SELECT  {functionName}()";
                 }
                 else
                 {
                     // Obtener propiedades del objeto real
                     var properties = parameters.GetType().GetProperties();
                     var paramNames = string.Join(", ", properties.Select(p => $"@{p.Name}"));
-                    sql = $"SELECT * FROM {functionName}({paramNames})";
+                    sql = $"SELECT  {functionName}({paramNames})";
                 }
 
                 var result = await conn.QueryAsync<T>(sql, parameters, commandType: CommandType.Text);
@@ -40,7 +40,8 @@ namespace ProyectoFinal.Datos.DataAccess
             }
             catch (NpgsqlException ex)
             {
-                throw new Exception($"Error al ejecutar la función {functionName}: {ex.ErrorCode}", ex);
+               
+                throw new Exception($"Error al ejecutar la función {functionName}: {ex.Message}", ex);
             }
         }
     }
